@@ -99,9 +99,9 @@ app.get("/health", async (req: Request, res: Response): Promise<void> => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
-app.use("/api", webMvpRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/readiness", readinessRoutes);
+app.use("/api", webMvpRoutes);
 
 // Serve OpenAPI Spec JSON
 app.get("/api-docs.json", (req: Request, res: Response): void => {
