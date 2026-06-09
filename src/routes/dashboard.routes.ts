@@ -1,8 +1,12 @@
 import { Router } from "express";
 import { DashboardController } from "../controllers/dashboard.controller";
+import { requireAuth } from "../middlewares/auth.middleware";
 
 const router = Router();
 const controller = new DashboardController();
+
+// Protect all dashboard routes
+router.use(requireAuth);
 
 router.get("/:id/readiness-score", controller.getReadinessScore);
 router.get("/:id/skills-attention", controller.getSkillsAttention);
