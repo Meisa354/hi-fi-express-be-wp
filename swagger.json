@@ -1100,6 +1100,275 @@
           }
         }
       }
+    },
+    "/api/dashboard/{id}/readiness-score": {
+      "get": {
+        "summary": "Get Readiness Score",
+        "description": "Retrieves the overall readiness score for a specific user.",
+        "tags": ["Dashboard"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "User UUID string",
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Readiness score retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Readiness score retrieved successfully" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "score": { "type": "integer", "example": 62 },
+                        "max_score": { "type": "integer", "example": 100 },
+                        "change_from_last_week": { "type": "string", "example": "+5%" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Readiness score not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Readiness score not found" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/dashboard/{id}/skills-attention": {
+      "get": {
+        "summary": "Get Skills Need Attention",
+        "description": "Retrieves list of skills that need attention for a specific user.",
+        "tags": ["Dashboard"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "User UUID string",
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Skills attention retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Skills attention retrieved successfully" },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "skill_name": { "type": "string", "example": "System Design" },
+                          "progress": { "type": "integer", "example": 38 }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Skills attention not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Skills attention not found" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/dashboard/{id}/continue-working": {
+      "get": {
+        "summary": "Get Continue Working Items",
+        "description": "Retrieves list of in-progress items for a specific user.",
+        "tags": ["Dashboard"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "User UUID string",
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Continue working retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Continue working retrieved successfully" },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "title": { "type": "string", "example": "REST API with Express" },
+                          "status": { "type": "string", "example": "In Progress" },
+                          "step": { "type": "integer", "example": 3 }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Continue working not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Continue working not found" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/dashboard/{id}/achievements": {
+      "get": {
+        "summary": "Get Recent Achievements",
+        "description": "Retrieves recent achievements for a specific user.",
+        "tags": ["Dashboard"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "User UUID string",
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Achievements retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Achievements retrieved successfully" },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "title": { "type": "string", "example": "First Project Completed" },
+                          "detail": { "type": "string", "example": "Got AI feedback on 3 lines" },
+                          "created_at": { "type": "string", "format": "date-time" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Achievements not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Achievements not found" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/dashboard/{id}/growth-progress": {
+      "get": {
+        "summary": "Get Growth Progress",
+        "description": "Retrieves growth progress stats for a specific user.",
+        "tags": ["Dashboard"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "User UUID string",
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Growth progress retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Growth progress retrieved successfully" },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "period": { "type": "string", "example": "This month" },
+                        "skills_mapped": { "type": "integer", "example": 12 },
+                        "project_done": { "type": "integer", "example": 3 },
+                        "simulations": { "type": "integer", "example": 2 }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Growth progress not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string", "example": "Growth progress not found" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
